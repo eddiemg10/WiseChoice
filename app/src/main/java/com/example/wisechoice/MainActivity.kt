@@ -1,5 +1,6 @@
 package com.example.wisechoice
 
+import android.content.res.Configuration
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -35,6 +36,8 @@ fun Greeting(name: String) {
 }
 
 @Preview(showBackground = true)
+@Preview(name="Dark Mode", uiMode = Configuration.UI_MODE_NIGHT_YES,
+    showBackground = true)
 @Composable
 fun DefaultPreview() {
     WiseChoiceTheme {
