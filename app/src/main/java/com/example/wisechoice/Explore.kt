@@ -95,14 +95,12 @@ fun ExplorePage(){
 
             Box(
                 modifier = Modifier.fillMaxWidth(),
-                contentAlignment = Alignment.Center
             ) {
                 Spacer(modifier = Modifier
                     .fillMaxWidth()
                     .height(10.dp))
                 LazyVerticalGrid(
                     cells = GridCells.Adaptive(180.dp),
-                    horizontalArrangement = Arrangement.Center,
                     content = {
                         CoursesData.explore.map { item { CourseCard(it) } }
                     },
