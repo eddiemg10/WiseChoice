@@ -24,7 +24,9 @@ private val DarkColorScheme = darkColorScheme(
     surface =  purple_200,
     onSurface = white,
     onSurfaceVariant = purple_50,
-    onPrimary = purple_50
+    onPrimary = purple_50,
+    onSecondary = white
+
 )
 
 private val LightColorScheme = lightColorScheme(
@@ -37,6 +39,7 @@ private val LightColorScheme = lightColorScheme(
     onSurfaceVariant = grey_50,
     onSurface = grey_100,
     onPrimary = purple_50,
+    onSecondary = white
 
 
 

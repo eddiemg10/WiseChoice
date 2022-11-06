@@ -39,22 +39,22 @@ import com.example.wisechoice.sampledata.CoursesData
 import com.example.wisechoice.ui.theme.WiseChoiceTheme
 
 
-class Explore: ComponentActivity(){
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContent {
-            WiseChoiceTheme {
-                // A surface container using the 'background' color from the theme
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
-                ) {
-//                    Login()
-                }
-            }
-        }
-    }
-}
+//class Explore: ComponentActivity(){
+//    override fun onCreate(savedInstanceState: Bundle?) {
+//        super.onCreate(savedInstanceState)
+//        setContent {
+//            WiseChoiceTheme {
+//                // A surface container using the 'background' color from the theme
+//                Surface(
+//                    modifier = Modifier.fillMaxSize(),
+//                    color = MaterialTheme.colorScheme.background
+//                ) {
+//                    ExplorePage()
+//                }
+//            }
+//        }
+//    }
+//}
 
 data class Course(val name: String, val university: String, val star: String, val pic: String)
 
@@ -101,25 +101,19 @@ fun ExplorePage(){
                     .height(10.dp))
                 LazyVerticalGrid(
                     cells = GridCells.Adaptive(180.dp),
+                    contentPadding = PaddingValues(
+                        bottom = 100.dp
+                    ),
                     content = {
                         CoursesData.explore.map { item { CourseCard(it) } }
                     },
                 )
 
+
             }
 
         }
 
-        Row(
-            verticalAlignment = Alignment.Bottom,
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(60.dp)
-                .background(MaterialTheme.colorScheme.secondary)
-                .align(Alignment.BottomCenter)
-        ){
-            Text("NavBar")
-        }
     }
 
 }
