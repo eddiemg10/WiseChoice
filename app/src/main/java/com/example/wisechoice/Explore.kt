@@ -35,6 +35,8 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import com.example.wisechoice.sampledata.CoursesData
 import com.example.wisechoice.ui.theme.WiseChoiceTheme
 
@@ -56,11 +58,11 @@ import com.example.wisechoice.ui.theme.WiseChoiceTheme
 //    }
 //}
 
-data class Course(val name: String, val university: String, val star: String, val pic: String)
+data class Course(val id: Int, val name: String, val university: String, val star: String, val pic: String)
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
-fun ExplorePage(){
+fun ExplorePage(navController: NavHostController = rememberNavController()){
 
     Box(
         modifier = Modifier
@@ -78,12 +80,6 @@ fun ExplorePage(){
                 PrimaryButton("Recommend course to me", {/*TODO*/})
             }
 
-//            Spacer(modifier = Modifier
-//                .fillMaxWidth()
-//                .height(10.dp))
-
-//            Text(text = "OR", textAlign = TextAlign.Center, color = MaterialTheme.colorScheme.onBackground,
-//                modifier = Modifier.fillMaxWidth())
 
             Spacer(modifier = Modifier
                 .fillMaxWidth()
@@ -105,7 +101,7 @@ fun ExplorePage(){
                         bottom = 100.dp
                     ),
                     content = {
-                        CoursesData.explore.map { item { CourseCard(it) } }
+                        CoursesData.explore.map { item { CourseCard(it, navController) } }
                     },
                 )
 

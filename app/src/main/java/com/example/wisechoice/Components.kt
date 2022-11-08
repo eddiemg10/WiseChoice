@@ -1,9 +1,8 @@
 package com.example.wisechoice
 
-import androidx.compose.foundation.BorderStroke
-import androidx.compose.foundation.Image
-import androidx.compose.foundation.border
+import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
@@ -14,18 +13,23 @@ import androidx.compose.material.TextFieldDefaults
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.Search
+import androidx.compose.material.icons.materialIcon
 import androidx.compose.material.icons.rounded.Star
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import coil.compose.ImagePainter
 import coil.compose.rememberImagePainter
 import coil.transform.RoundedCornersTransformation
@@ -36,6 +40,20 @@ fun Heading(title: String){
         color = MaterialTheme.colorScheme.onBackground,
         text = title,
         style = MaterialTheme.typography.displaySmall,
+        fontWeight = FontWeight.Bold,
+        textAlign = TextAlign.Center,
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(top = 20.dp)
+    )
+}
+
+@Composable
+fun SubHeading(title: String){
+    Text(
+        color = MaterialTheme.colorScheme.onBackground,
+        text = title,
+        style = MaterialTheme.typography.bodyLarge,
         fontWeight = FontWeight.Bold,
         textAlign = TextAlign.Center,
         modifier = Modifier
@@ -69,7 +87,7 @@ fun CardImage(url: String = "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree
         contentAlignment = Alignment.Center
     ){
         val painter = rememberImagePainter(
-            data = "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg",
+            data = url,
             builder = {
                 placeholder(R.drawable.placeholder)
                 error(R.drawable.placeholder)
@@ -90,11 +108,16 @@ fun CardImage(url: String = "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree
 }
 
 @Composable
-fun CourseCard(course: Course){
+fun CourseCard(course: Course, navHostController: NavHostController = rememberNavController()){
     Column(
-        modifier = Modifier.padding(top = 10.dp),
+        modifier = Modifier
+            .padding(top = 10.dp)
+            .clickable {
+                navHostController.navigate(route = Screen.Universities.passId(course.id))
+            },
         horizontalAlignment = Alignment.CenterHorizontally
     ){
+
         CardImage(url = course.pic)
         Spacer(modifier = Modifier
             .height(10.dp))
@@ -124,6 +147,93 @@ fun CourseCard(course: Course){
 
     }
 }
+
+@Composable
+fun UniversityCard(university: University, navHostController: NavHostController = rememberNavController()){
+    Column {
+        Row(
+            modifier = Modifier
+                .padding(top = 10.dp, start = 20.dp, end = 20.dp)
+                .fillMaxWidth(),
+            verticalAlignment = Alignment.CenterVertically
+
+        ) {
+
+            Column(
+                modifier = Modifier.fillMaxWidth(0.6f).padding(end = 17.dp)
+            ) {
+
+                Text(
+                    text = university.name,
+                    style = MaterialTheme.typography.bodyLarge,
+                    fontWeight = FontWeight.Normal,
+                    color = MaterialTheme.colorScheme.onBackground
+
+                )
+                Text(
+                    text = "Recent cutoff points",
+                    style = MaterialTheme.typography.bodyMedium,
+                    fontWeight = FontWeight.Light,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                )
+
+                Spacer(
+                    modifier = Modifier
+                        .height(20.dp)
+                )
+                Row() {
+                    LazyRow {
+                        university.cutoff.map {
+                            item {
+                                val text = "${it.year} | ${it.cutoff}"
+                                Badge(text)
+                            }
+                        }
+                    }
+                }
+            }
+
+            Column {
+                CardImage(url = university.logo)
+            }
+
+        }
+        Spacer(
+            modifier = Modifier
+                .height(20.dp)
+        )
+        Column(modifier=Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
+
+            Box(
+                modifier = Modifier.background(MaterialTheme.colorScheme.onBackground.copy(alpha = 0.6f))
+                    .fillMaxWidth(0.9f)
+                    .height(1.dp)
+                    .clip(RoundedCornerShape(50.dp))
+            )
+        }
+    }
+}
+
+@Composable
+fun Badge(text: String){
+    Box(modifier = Modifier
+        .padding(all=7.dp)
+        .background(color = MaterialTheme.colorScheme.surface,
+            shape = RoundedCornerShape(50.dp)
+        ),
+
+
+    ){
+        Text(text=text,
+            modifier = Modifier.padding(start = 7.dp, end = 7.dp, top = 3.dp, bottom = 3.dp),
+            color = MaterialTheme.colorScheme.onSurface,
+            style = MaterialTheme.typography.labelSmall
+            )
+
+    }
+}
+
+
 
 @Composable
 fun TextInput(){
@@ -207,4 +317,10 @@ fun TextInput(){
                 )
         }
     }
+}
+
+@Composable
+@Preview(showBackground = true)
+fun showBadge(){
+    Badge("2022 | 22.56")
 }

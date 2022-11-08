@@ -3,6 +3,7 @@ package com.example.wisechoice
 import android.content.res.Configuration
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -27,16 +28,18 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.zIndex
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import com.example.wisechoice.sampledata.UsersData
 import com.example.wisechoice.ui.theme.WiseChoiceTheme
 import com.example.wisechoice.ui.theme.pink_heavy
 
 
-data class User(val id: String, val fname: String, val lname: String, val email: String, val holland: String, val grades: Grades )
+data class User(val id: Int, val fname: String, val lname: String, val email: String, val holland: String, val grades: Grades )
 data class Grades(val math: String, val eng: String, val swa: String, val phy: String, val chem: String, val hist: String,val geo: String, )
 
 @Composable
-fun Profile(){
+fun Profile(navController: NavHostController = rememberNavController()){
 
     val user = UsersData.user1
     Column(modifier = Modifier
@@ -113,7 +116,9 @@ fun Profile(){
 
             }
 
-            OutlinedButton(onClick = { /*TODO*/ },
+            OutlinedButton(onClick = {
+                navController.navigate(route = Screen.Holland.passId(user.id))
+            },
                 modifier= Modifier
                     .size(100.dp)
                     .offset(x = 110.dp, y = 15.dp)
@@ -123,10 +128,10 @@ fun Profile(){
                 contentPadding = PaddingValues(0.dp),  //avoid the little icon
                 colors = ButtonDefaults.outlinedButtonColors(backgroundColor = MaterialTheme.colorScheme.primary , contentColor =  MaterialTheme.colorScheme.onPrimary),
             ) {
-                Text("Retake Holland Test" ,
+                Text("Retake\nHolland Test" ,
                     color = MaterialTheme.colorScheme.onPrimary,
                     textAlign = TextAlign.Center,
-                    style = MaterialTheme.typography.bodySmall,
+                    style = MaterialTheme.typography.labelSmall,
 
                     )
             }
@@ -191,7 +196,9 @@ fun Profile(){
                             .width(5.dp))
                         Icon(imageVector = Icons.Default.Edit,
                             contentDescription ="Info",
-                            modifier = Modifier.size(20.dp),
+                            modifier = Modifier.size(20.dp).clickable{
+                                navController.navigate(route = Screen.Grades.passId(user.id))
+                            },
                             tint = MaterialTheme.colorScheme.onSurface
                         )
                     }

@@ -6,7 +6,7 @@ import com.example.wisechoice.User
 object UsersData {
 
     val user1 = User(
-        id = "001",
+        id = 1,
         fname = "John",
         lname = "Doe",
         email = "johndoe@example.com",
