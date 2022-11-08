@@ -174,7 +174,6 @@ fun showExplorePreview(){
     WiseChoiceTheme {
         Surface{
             ExplorePage()
-
         }
     }
 }
