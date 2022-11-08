@@ -265,88 +265,6 @@ fun HollandNewScreen()
                         }
                     }
 
-                    Row(
-                            modifier = Modifier
-                                    .height(200.dp)
-                                    .fillMaxWidth()
-                                    .background(purple_200),
-                            verticalAlignment = Alignment.CenterVertically
-                    )
-                    {
-                        Spacer(modifier = Modifier.width(5.dp))
-                        IconButton(onClick = { /*TODO*/ },
-                                modifier = Modifier
-                                        .width(100.dp)
-                                        .height(150.dp)
-                                        .background(purple_200)
-                                        .padding(5.dp)
-                        ) {
-                            Column() {
-                                Icon(imageVector =Icons.Default.Search , contentDescription = "", tint= Color(0xFFFFFFFF), modifier = Modifier
-                                        .width(120.dp)
-                                        .height(30.dp))
-
-                                Text(
-                                        text = "Explore",
-                                        modifier = Modifier.width(100.dp),
-                                        color = Color(0xFFFFFFFF),
-                                        fontSize = 10.sp,
-                                        textAlign = TextAlign.Center
-
-                                )
-                            }
-                        }
-
-
-                        Spacer(modifier = Modifier.width(40.dp))
-                        IconButton(onClick = { /*TODO*/ },
-                                modifier = Modifier
-                                        .width(100.dp)
-                                        .height(150.dp)
-                                        .background(purple_200)
-                                        .padding(5.dp)
-                        ) {
-                            Column() {
-
-                                Icon(imageVector =Icons.Default.AccountBox , contentDescription = "", tint= Color(0xFFF44336), modifier = Modifier
-                                        .width(120.dp)
-                                        .height(30.dp))
-
-                                Text(
-                                        text = "My Courses",
-                                        modifier = Modifier.width(100.dp),
-                                        color = Color(0xFFFFFFFF),
-                                        fontSize = 10.sp,
-                                        textAlign = TextAlign.Center
-
-                                )
-                            }
-                        }
-
-                        Spacer(modifier = Modifier.width(45.dp))
-                        IconButton(onClick = { /*TODO*/ },
-                                modifier = Modifier
-                                        .width(100.dp)
-                                        .height(150.dp)
-                                        .background(purple_200)
-                                        .padding(5.dp)
-                        ) {
-                            Column() {
-                                Icon(imageVector =Icons.Default.Person , contentDescription = "", tint= Color(0xFFFFFFFF), modifier = Modifier
-                                        .width(120.dp)
-                                        .height(30.dp))
-
-                                Text(
-                                        text = "Profile",
-                                        modifier = Modifier.width(100.dp),
-                                        color = Color(0xFFFFFFFF),
-                                        fontSize = 10.sp,
-                                        textAlign = TextAlign.Center
-
-                                )
-                            }
-                        }
-
 
                 }
 
@@ -359,7 +277,7 @@ fun HollandNewScreen()
         }
     }
 
-}
+
 
 
 @Preview

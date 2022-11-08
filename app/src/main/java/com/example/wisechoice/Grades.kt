@@ -124,67 +124,67 @@ fun GradeNewScreen()
                             .shadow(20.dp)) {
                         Column(modifier = Modifier.padding(15.dp)) {
                             Text(
-                                text = "Your Grades:",
-                                color = Color(0xFF2E2E2E),
-                                fontSize = 15.sp,
-                                fontWeight = FontWeight.Bold,
+                                    text = "Your Grades:",
+                                    color = Color(0xFF2E2E2E),
+                                    fontSize = 15.sp,
+                                    fontWeight = FontWeight.Bold,
                             )
 
                             Row() {
                                 Text(
-                                    text = "English:A",
-                                    color = Color(0xFFACACAC),
-                                    fontSize = 10.sp
+                                        text = "English:A",
+                                        color = Color(0xFFACACAC),
+                                        fontSize = 12.sp
                                 )
                                 Spacer(modifier = Modifier.width(1.dp))
                                 Text(
-                                    text = "| Kiswahili :A",
-                                    color = Color(0xFFACACAC),
-                                    fontSize = 10.sp
+                                        text = "| Kiswahili :A",
+                                        color = Color(0xFFACACAC),
+                                        fontSize = 12.sp
 
                                 )
                                 Spacer(modifier = Modifier.width(1.dp))
                                 Text(
-                                    text = "| Physics :A |",
-                                    color = Color(0xFFACACAC),
-                                    fontSize = 10.sp
+                                        text = "| Physics :A |",
+                                        color = Color(0xFFACACAC),
+                                        fontSize = 12.sp
                                 )
                             }
                             Row() {
                                 Text(
-                                    text = "Chemistry:A",
-                                    color = Color(0xFFACACAC),
-                                    fontSize = 10.sp
+                                        text = "Chemistry:A",
+                                        color = Color(0xFFACACAC),
+                                        fontSize = 10.sp
                                 )
                                 Spacer(modifier = Modifier.width(5.dp))
                                 Text(
-                                    text = "| History :A",
-                                    color = Color(0xFFACACAC),
-                                    fontSize = 10.sp
+                                        text = "| History :A",
+                                        color = Color(0xFFACACAC),
+                                        fontSize = 12.sp
                                 )
                                 Spacer(modifier = Modifier.width(5.dp))
                                 Text(
-                                    text = "| Geography :A |",
-                                    color = Color(0xFFACACAC),
-                                    fontSize = 10.sp
+                                        text = "| Geography :A |",
+                                        color = Color(0xFFACACAC),
+                                        fontSize = 12.sp
                                 )
                             }
 
                             Row(modifier = Modifier
                                     .height(30.dp)
                                     .fillMaxWidth(),
-                                horizontalArrangement = Arrangement.End)
+                                    horizontalArrangement = Arrangement.End)
                             {
                                 IconButton(onClick = { /*TODO*/ },
-                                    modifier = Modifier
-                                            .clip(CircleShape)
-                                            .background(purple_100)
-                                            .width(30.dp)
-                                            .height(30.dp)
-                                            .border(2.dp, Color(0xFFF6F2F6), CircleShape)
+                                        modifier = Modifier
+                                                .clip(CircleShape)
+                                                .background(purple_100)
+                                                .width(30.dp)
+                                                .height(30.dp)
+                                                .border(2.dp, Color(0xFFF6F2F6), CircleShape)
 
-                                ){
-                                    Icon(imageVector =Icons.Default.Edit , contentDescription = "", tint= Color(0xFFFFFFFF), modifier = Modifier
+                                ) {
+                                    Icon(imageVector = Icons.Default.Edit, contentDescription = "", tint = Color(0xFFFFFFFF), modifier = Modifier
                                             .height(15.dp)
                                             .width(20.dp))
                                 }
@@ -205,69 +205,69 @@ fun GradeNewScreen()
                             .height(30.dp))
                     Row() {
                         Spacer(modifier = Modifier
-                            .width(50.dp))
+                                .width(50.dp))
                         Column()
                         {
                             Text(
-                                text = "Subject",
-                                modifier = Modifier,
-                                color = Color(0xFF2E2E2E),
-                                fontSize = 14.sp,
-                                textAlign = TextAlign.Center
+                                    text = "Subject",
+                                    modifier = Modifier,
+                                    color = Color(0xFF2E2E2E),
+                                    fontSize = 14.sp,
+                                    textAlign = TextAlign.Center
 
                             )
-                            Spacer(modifier =Modifier.height(10.dp))
-                         OutlinedButton(onClick = { /*TODO*/ }, shape= RoundedCornerShape(5.dp), modifier = Modifier
-                                 .height(40.dp)
-                                 .width(300.dp)) {
-                             Row(horizontalArrangement = Arrangement.SpaceBetween,
-                             modifier = Modifier.fillMaxWidth()) {
-                                 Text(
-                                     text = "Mathematics",
-                                     modifier = Modifier,
-                                     color = Color(0xFF2E2E2E),
-                                     fontSize = 18.sp,
-                                     textAlign = TextAlign.Center
-
-                                 )
-                                 Icon(
-                                     imageVector = Icons.Default.ArrowDropDown,
-                                     contentDescription = "",
-                                     tint = Color(0xFF301934)
-                                 )
-                             }
-                         }
-                             
-
-                            Spacer(modifier =Modifier.height(5.dp))
-                            Text(
-                                text = "Grade",
-                                modifier = Modifier,
-                                color = Color(0xFF2E2E2E),
-                                fontSize = 14.sp,
-                                textAlign = TextAlign.Center
-
-                            )
-
-                            Spacer(modifier =Modifier.height(10.dp))
-
-                            OutlinedButton(onClick = { /*TODO*/ }, shape= RoundedCornerShape(5.dp), modifier = Modifier
+                            Spacer(modifier = Modifier.height(10.dp))
+                            OutlinedButton(onClick = { /*TODO*/ }, shape = RoundedCornerShape(5.dp), modifier = Modifier
                                     .height(40.dp)
                                     .width(300.dp)) {
                                 Row(horizontalArrangement = Arrangement.SpaceBetween,
-                                    modifier = Modifier.fillMaxWidth()) {
+                                        modifier = Modifier.fillMaxWidth()) {
                                     Text(
-                                        text = "A",
-                                        modifier = Modifier,
-                                        color = Color(0xFF2E2E2E),
-                                        fontSize = 18.sp,
-                                        textAlign = TextAlign.Center
+                                            text = "Mathematics",
+                                            modifier = Modifier,
+                                            color = Color(0xFF2E2E2E),
+                                            fontSize = 18.sp,
+                                            textAlign = TextAlign.Center
 
                                     )
                                     Icon(
-                                        imageVector = Icons.Default.ArrowDropDown,
-                                        contentDescription = "",
-                                        tint = Color(0xFF301934)
+                                            imageVector = Icons.Default.ArrowDropDown,
+                                            contentDescription = "",
+                                            tint = Color(0xFF301934)
+                                    )
+                                }
+                            }
+
+
+                            Spacer(modifier = Modifier.height(5.dp))
+                            Text(
+                                    text = "Grade",
+                                    modifier = Modifier,
+                                    color = Color(0xFF2E2E2E),
+                                    fontSize = 14.sp,
+                                    textAlign = TextAlign.Center
+
+                            )
+
+                            Spacer(modifier = Modifier.height(10.dp))
+
+                            OutlinedButton(onClick = { /*TODO*/ }, shape = RoundedCornerShape(5.dp), modifier = Modifier
+                                    .height(40.dp)
+                                    .width(300.dp)) {
+                                Row(horizontalArrangement = Arrangement.SpaceBetween,
+                                        modifier = Modifier.fillMaxWidth()) {
+                                    Text(
+                                            text = "A",
+                                            modifier = Modifier,
+                                            color = Color(0xFF2E2E2E),
+                                            fontSize = 18.sp,
+                                            textAlign = TextAlign.Center
+
+                                    )
+                                    Icon(
+                                            imageVector = Icons.Default.ArrowDropDown,
+                                            contentDescription = "",
+                                            tint = Color(0xFF301934)
                                     )
                                 }
                             }
@@ -280,96 +280,20 @@ fun GradeNewScreen()
 
                         Column()
                         {
-                           Button(onClick = { /*TODO*/ },
-                             colors = androidx.compose.material3.ButtonDefaults.buttonColors(androidx.compose.material3.MaterialTheme.colorScheme.secondary), modifier = Modifier.width(200.dp)) {
-                               Text(
-                                   text = "ADD",
-                                   modifier = Modifier,
-                                   color = Color(0xFFFFFFFF),
-                                   fontSize = 18.sp,
-                                   textAlign = TextAlign.Center
+                            Button(onClick = { /*TODO*/ },
+                                    colors = androidx.compose.material3.ButtonDefaults.buttonColors(androidx.compose.material3.MaterialTheme.colorScheme.secondary), modifier = Modifier.width(200.dp)) {
+                                Text(
+                                        text = "ADD",
+                                        modifier = Modifier,
+                                        color = Color(0xFFFFFFFF),
+                                        fontSize = 18.sp,
+                                        textAlign = TextAlign.Center
 
-                               )
-                           }
+                                )
+                            }
 
                         }
                     }
-                    Spacer(modifier = Modifier.height(30.dp))
-                    Row(
-                            modifier = Modifier
-                                    .height(200.dp)
-                                    .fillMaxWidth()
-                                    .background(purple_200),
-                           verticalAlignment = Alignment.CenterVertically
-                    )
-                    {
-                    Spacer(modifier = Modifier.width(5.dp))
-                            IconButton(onClick = { /*TODO*/ },
-                                    modifier = Modifier
-                                            .width(100.dp)
-                                            .height(150.dp)
-                                            .background(purple_200).padding(5.dp)
-                            ) {
-                                Column() {
-                                    Icon(imageVector =Icons.Default.Search , contentDescription = "", tint= Color(0xFFFFFFFF), modifier = Modifier.width(120.dp).height(30.dp))
-
-                                    Text(
-                                            text = "Explore",
-                                            modifier = Modifier.width(100.dp),
-                                            color = Color(0xFFFFFFFF),
-                                            fontSize = 10.sp,
-                                            textAlign = TextAlign.Center
-
-                                    )
-                                }
-                            }
-
-
-                        Spacer(modifier = Modifier.width(40.dp))
-                        IconButton(onClick = { /*TODO*/ },
-                                modifier = Modifier
-                                        .width(100.dp)
-                                        .height(150.dp)
-                                        .background(purple_200).padding(5.dp)
-                        ) {
-                            Column() {
-
-                                Icon(imageVector =Icons.Default.AccountBox , contentDescription = "", tint= Color(0xFFF44336), modifier = Modifier.width(120.dp).height(30.dp))
-
-                                Text(
-                                        text = "My Courses",
-                                        modifier = Modifier.width(100.dp),
-                                        color = Color(0xFFFFFFFF),
-                                        fontSize = 10.sp,
-                                        textAlign = TextAlign.Center
-
-                                )
-                            }
-                        }
-
-                        Spacer(modifier = Modifier.width(45.dp))
-                        IconButton(onClick = { /*TODO*/ },
-                                modifier = Modifier
-                                        .width(100.dp)
-                                        .height(150.dp)
-                                        .background(purple_200).padding(5.dp)
-                        ) {
-                            Column() {
-                                Icon(imageVector =Icons.Default.Person , contentDescription = "", tint= Color(0xFFFFFFFF), modifier = Modifier.width(120.dp).height(30.dp))
-
-                                Text(
-                                        text = "Profile",
-                                        modifier = Modifier.width(100.dp),
-                                        color = Color(0xFFFFFFFF),
-                                        fontSize = 10.sp,
-                                        textAlign = TextAlign.Center
-
-                                )
-                            }
-                        }
-
-                        }
-
                 }
             }
 
