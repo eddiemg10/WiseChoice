@@ -35,32 +35,34 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import com.example.wisechoice.sampledata.CoursesData
 import com.example.wisechoice.ui.theme.WiseChoiceTheme
 
 
-class Explore: ComponentActivity(){
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContent {
-            WiseChoiceTheme {
-                // A surface container using the 'background' color from the theme
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
-                ) {
-//                    Login()
-                }
-            }
-        }
-    }
-}
+//class Explore: ComponentActivity(){
+//    override fun onCreate(savedInstanceState: Bundle?) {
+//        super.onCreate(savedInstanceState)
+//        setContent {
+//            WiseChoiceTheme {
+//                // A surface container using the 'background' color from the theme
+//                Surface(
+//                    modifier = Modifier.fillMaxSize(),
+//                    color = MaterialTheme.colorScheme.background
+//                ) {
+//                    ExplorePage()
+//                }
+//            }
+//        }
+//    }
+//}
 
-data class Course(val name: String, val university: String, val star: String, val pic: String)
+data class Course(val id: Int, val name: String, val university: String, val star: String, val pic: String)
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
-fun ExplorePage(){
+fun ExplorePage(navController: NavHostController = rememberNavController()){
 
     Box(
         modifier = Modifier
@@ -78,12 +80,6 @@ fun ExplorePage(){
                 PrimaryButton("Recommend course to me", {/*TODO*/})
             }
 
-//            Spacer(modifier = Modifier
-//                .fillMaxWidth()
-//                .height(10.dp))
-
-//            Text(text = "OR", textAlign = TextAlign.Center, color = MaterialTheme.colorScheme.onBackground,
-//                modifier = Modifier.fillMaxWidth())
 
             Spacer(modifier = Modifier
                 .fillMaxWidth()
@@ -101,25 +97,19 @@ fun ExplorePage(){
                     .height(10.dp))
                 LazyVerticalGrid(
                     cells = GridCells.Adaptive(180.dp),
+                    contentPadding = PaddingValues(
+                        bottom = 100.dp
+                    ),
                     content = {
-                        CoursesData.explore.map { item { CourseCard(it) } }
+                        CoursesData.explore.map { item { CourseCard(it, navController) } }
                     },
                 )
+
 
             }
 
         }
 
-        Row(
-            verticalAlignment = Alignment.Bottom,
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(60.dp)
-                .background(MaterialTheme.colorScheme.secondary)
-                .align(Alignment.BottomCenter)
-        ){
-            Text("NavBar")
-        }
     }
 
 }
@@ -150,7 +140,6 @@ fun showExplorePreview(){
     WiseChoiceTheme {
         Surface{
             ExplorePage()
-
         }
     }
 }
