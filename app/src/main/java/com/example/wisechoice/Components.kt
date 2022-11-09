@@ -6,16 +6,20 @@ import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.material.CircularProgressIndicator
-import androidx.compose.material.ContentAlpha
-import androidx.compose.material.OutlinedTextField
-import androidx.compose.material.TextFieldDefaults
+import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material.icons.materialIcon
 import androidx.compose.material.icons.rounded.Star
 import androidx.compose.material3.*
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -23,6 +27,7 @@ import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.style.TextAlign
@@ -78,6 +83,24 @@ fun PrimaryButton(text: String, handler: ()->Unit){
         )
     }
 }
+
+@Composable
+fun ButtonwithIcon(text: String, handler: ()->Unit){
+    Button(
+        onClick = handler,
+        colors = ButtonDefaults.buttonColors(MaterialTheme.colorScheme.primary),
+        shape = RoundedCornerShape(8.dp),
+    ) {
+        Text(
+            text= text,
+            style = MaterialTheme.typography.bodyMedium,
+            color = MaterialTheme.colorScheme.onPrimary
+        )
+    }
+}
+
+
+
 
 @Composable
 fun CardImage(url: String = "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg"){
@@ -147,6 +170,70 @@ fun CourseCard(course: Course, navHostController: NavHostController = rememberNa
 
     }
 }
+
+
+@Composable
+fun StarredCourseCard(course: Course) {
+    Column(
+        modifier = Modifier.padding(top = 10.dp),
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        Row(
+            horizontalArrangement = Arrangement.Center,
+            modifier = Modifier
+                .fillMaxWidth()
+        ) {
+            CardImage(url = course.pic)
+
+            Spacer(
+                modifier = Modifier
+                    .height(10.dp)
+                    .width(10.dp)
+            )
+            Column(
+                modifier = Modifier.padding(top = 10.dp),
+                verticalArrangement = Arrangement.Center
+            ) {
+                Text(
+                    text = course.name,
+                    style = MaterialTheme.typography.bodyMedium,
+                    fontWeight = FontWeight.Normal,
+                    color = MaterialTheme.colorScheme.onSurface
+
+                )
+                Text(
+                    text = course.university,
+                    style = MaterialTheme.typography.bodySmall,
+                    fontWeight = FontWeight.Light,
+                    color = MaterialTheme.colorScheme.onBackground
+                )
+                Row(
+                    verticalAlignment = Alignment.CenterVertically
+                )
+                {
+                    Icon(
+                        Icons.Rounded.Star,
+                        contentDescription = "Star Icon",
+                        modifier = Modifier.size(14.dp),
+                        tint = MaterialTheme.colorScheme.primary
+                    )
+                    Text(
+                        text = course.star,
+                        style = MaterialTheme.typography.bodySmall,
+                        fontWeight = FontWeight.Light,
+                        color = MaterialTheme.colorScheme.primary
+                    )
+                }
+            }
+        }
+    }
+
+    Divider(color = MaterialTheme.colorScheme.primary,
+        thickness = 1.dp,
+    modifier = Modifier.padding(10.dp)
+    )
+}
+
 
 @Composable
 fun UniversityCard(university: University, navHostController: NavHostController = rememberNavController()){
