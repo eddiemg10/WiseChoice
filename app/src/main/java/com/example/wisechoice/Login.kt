@@ -3,6 +3,7 @@ package com.example.wisechoice
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
@@ -31,37 +32,44 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.wisechoice.ui.theme.WiseChoiceTheme
 
-//class LoginActivity : ComponentActivity() {
-//
-//    override fun onCreate(savedInstanceState: Bundle?) {
-//        super.onCreate(savedInstanceState)
-//        setContent {
-//            WiseChoiceTheme {
-//                // A surface container using the 'background' color from the theme
-//                Surface(
-//                    modifier = Modifier.fillMaxSize(),
-//                    color = MaterialTheme.colorScheme.background
-//                ) {
-////                    Login()
-//                }
-//            }
-//        }
-//
-//}
+class LoginActivity : ComponentActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContent {
+            WiseChoiceTheme {
+                // A surface container using the 'background' color from the theme
+                Surface(
+                    modifier = Modifier.fillMaxSize(),
+                    color = MaterialTheme.colorScheme.background
+                ) {
+                    Login()
+                }
+            }
+        }
+    }
+}
 
 @Composable
-fun Login(navController: NavController){
+fun Login(){
 
     Column(
         verticalArrangement = Arrangement.spacedBy(12.dp),
         modifier = Modifier
             .fillMaxSize()
+            .background(MaterialTheme.colorScheme.secondary)
             .padding(16.dp)
 
     ) {
-        Heading(title = "CREATE ACCOUNT")
+        Header("LOGIN")
+
         Email()
+        Spacer(modifier = Modifier
+            .fillMaxWidth()
+            .height(7.dp))
         Password("Password")
+        Spacer(modifier = Modifier
+            .fillMaxWidth()
+            .height(7.dp))
         signinButton(navController = navController)
         /*TODO: Implement Sign Up */
         Button(
@@ -69,9 +77,14 @@ fun Login(navController: NavController){
                 navController.navigate(Screen.Registration.route)
             },
             modifier = Modifier.fillMaxWidth(),
-            ) {
+        ) {
             Text(text = "Create Account")
         }
+        Spacer(modifier = Modifier
+            .fillMaxWidth()
+            .height(8.dp))
+        footer("Don't have an account? Register here")
+
 
     }
 }
@@ -146,13 +159,15 @@ fun Password(string: String){
 }
 
 @Composable
-fun signinButton(navController: NavController){
+fun signinButton(){
     Button(
         onClick = {
                   navController.popBackStack()
                   navController.navigate(Graph.EXPLORE)
                   },
-        modifier = Modifier.fillMaxWidth(),
+        modifier = Modifier
+            .fillMaxWidth(fraction = 0.8F)
+            .padding(horizontal = 12.dp),
         contentPadding = PaddingValues(16.dp),
         colors = ButtonDefaults.buttonColors(
             backgroundColor = MaterialTheme.colorScheme.primary,
