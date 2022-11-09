@@ -42,8 +42,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.wisechoice.ui.theme.*
 import org.intellij.lang.annotations.JdkConstants.HorizontalAlignment
+
 @Composable
-fun GradeNewScreen()
+fun Grades(userId: Int?)
 {
     Box(modifier = Modifier
             .background(purple_800)
@@ -278,6 +279,7 @@ fun GradeNewScreen()
                             .height(100.dp))
                     Row(horizontalArrangement = Arrangement.Center, modifier = Modifier.fillMaxWidth()) {
 
+
                         Column()
                         {
                             Button(onClick = { /*TODO*/ },
@@ -298,6 +300,7 @@ fun GradeNewScreen()
             }
 
         }
+
     }
 }
 

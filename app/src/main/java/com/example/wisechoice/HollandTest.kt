@@ -39,7 +39,8 @@ import com.example.wisechoice.ui.theme.*
 
 
 @Composable
-fun HollandNewScreen()
+
+fun HollandTest(userId: Int?)
 {
     Box(modifier = Modifier
             .background(purple_800)
@@ -145,6 +146,7 @@ fun HollandNewScreen()
             ) {
                 Spacer(modifier = Modifier.height(20.dp).background(pink_light))
 
+
                 Column(modifier = Modifier.fillMaxWidth()) {
                     Spacer(modifier = Modifier.height(10.dp))
                     Column(modifier = Modifier.padding(25.dp)) {
@@ -164,13 +166,16 @@ fun HollandNewScreen()
                         }
                         Spacer(modifier = Modifier.height(15.dp))
 
+
                         Button(onClick = { /*TODO*/ },
                                 colors = androidx.compose.material3.ButtonDefaults.buttonColors(androidx.compose.material3.MaterialTheme.colorScheme.primary), modifier = Modifier
                                 .width(400.dp)
                                 .height(50.dp),
                                 shape = RoundedCornerShape(10.dp)) {
                             Text(
+
                                     text = "Slightly dislike",
+
                                     modifier = Modifier,
                                     color = Color(0xFFFFFFFF),
                                     fontSize = 18.sp,
@@ -186,7 +191,9 @@ fun HollandNewScreen()
                                 .height(50.dp),
                                 shape = RoundedCornerShape(10.dp)) {
                             Text(
+
                                     text = "Neutral",
+
                                     modifier = Modifier,
                                     color = Color(0xFFFFFFFF),
                                     fontSize = 18.sp,
@@ -194,6 +201,7 @@ fun HollandNewScreen()
 
                             )
                         }
+
 
                         Spacer(modifier = Modifier.height(15.dp))
 
@@ -226,6 +234,7 @@ fun HollandNewScreen()
                                     color = Color(0xFFFFFFFF),
                                     fontSize = 18.sp,
                                     textAlign = TextAlign.Center
+
 
                             )
                         }
@@ -284,5 +293,7 @@ fun HollandNewScreen()
 @Composable
 fun PreviewHollandNewScreen()
 {
-    HollandNewScreen()
+
+    HollandTest(1)
+
 }
