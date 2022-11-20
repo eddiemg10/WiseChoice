@@ -16,11 +16,14 @@ fun BottomNavGraph(navController: NavHostController){
         navController = navController,
         startDestination = BottomBarScreen.Explore.route
     ){
+        composable(route = Screen.SplashScreen.route){
+            SplashScreen(navController = navController)
+        }
         composable(route = BottomBarScreen.Explore.route){
             ExplorePage(navController = navController)
         }
         composable(route = BottomBarScreen.MyCourses.route){
-            Login()
+            StarredCourses()
         }
         composable(route = BottomBarScreen.Profile.route){
             Profile(navController = navController)
@@ -34,7 +37,7 @@ fun BottomNavGraph(navController: NavHostController){
 
 fun NavGraphBuilder.exploreNavGraph(navController: NavHostController){
     navigation(
-        route = "UNIVERSITIES",
+        route = Graph.UNIVERSITIES,
         startDestination = Screen.Universities.route
     ){
         composable(
@@ -51,7 +54,7 @@ fun NavGraphBuilder.exploreNavGraph(navController: NavHostController){
 
 fun NavGraphBuilder.profileNavGraph(navController: NavHostController){
     navigation(
-        route = "PROFILE",
+        route = Graph.PROFILE,
         startDestination = Screen.Holland.route
     ){
         composable(

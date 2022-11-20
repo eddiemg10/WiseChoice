@@ -27,27 +27,30 @@ import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.example.wisechoice.ui.theme.WiseChoiceTheme
 
-class LoginActivity : ComponentActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContent {
-            WiseChoiceTheme {
-                // A surface container using the 'background' color from the theme
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
-                ) {
-                    Login()
-                }
-            }
-        }
-    }
-}
+//class LoginActivity : ComponentActivity() {
+//
+//    override fun onCreate(savedInstanceState: Bundle?) {
+//        super.onCreate(savedInstanceState)
+//        setContent {
+//            WiseChoiceTheme {
+//                // A surface container using the 'background' color from the theme
+//                Surface(
+//                    modifier = Modifier.fillMaxSize(),
+//                    color = MaterialTheme.colorScheme.background
+//                ) {
+////                    Login()
+//                }
+//            }
+//        }
+//
+//}
 
 @Composable
-fun Login(){
+fun Login(navController: NavController){
 
     Column(
         verticalArrangement = Arrangement.spacedBy(12.dp),
@@ -59,7 +62,16 @@ fun Login(){
         Heading(title = "CREATE ACCOUNT")
         Email()
         Password("Password")
-        signinButton()
+        signinButton(navController = navController)
+        /*TODO: Implement Sign Up */
+        Button(
+            onClick = {
+                navController.navigate(Screen.Registration.route)
+            },
+            modifier = Modifier.fillMaxWidth(),
+            ) {
+            Text(text = "Create Account")
+        }
 
     }
 }
@@ -67,7 +79,7 @@ fun Login(){
 @Preview(showBackground = true)
 @Composable
 fun showLoginPreview(){
-    Login()
+    Login(navController = rememberNavController())
 }
 
 @Composable
@@ -134,9 +146,12 @@ fun Password(string: String){
 }
 
 @Composable
-fun signinButton(){
+fun signinButton(navController: NavController){
     Button(
-        onClick = { /*TODO*/ },
+        onClick = {
+                  navController.popBackStack()
+                  navController.navigate(Graph.EXPLORE)
+                  },
         modifier = Modifier.fillMaxWidth(),
         contentPadding = PaddingValues(16.dp),
         colors = ButtonDefaults.buttonColors(

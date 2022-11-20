@@ -23,6 +23,8 @@ fun MainScreen(){
     
     Scaffold(bottomBar = {BottomBar(navController = navController)}
     ) {
+//        RootNavigationGraph(navController = navController)
+
         BottomNavGraph(navController = navController)
     }
 }

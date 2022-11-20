@@ -9,6 +9,13 @@ import androidx.compose.ui.graphics.vector.ImageVector
 sealed class Screen(
     val route: String,
 ){
+
+    object SplashScreen: Screen("splash"){
+    }
+    object Login: Screen("login")
+
+    object Registration: Screen("registration")
+
     object Universities: Screen("universities/{course}"){
         fun passId(course: Int): String{
             return "universities/$course"

@@ -72,30 +72,14 @@ fun StarredCourses(){
                 shadowElevation = 8.dp,
             ) {
                 Row(
-                    modifier = Modifier.fillMaxWidth()
+                    modifier = Modifier.fillMaxWidth().background(MaterialTheme.colorScheme.background),
+                    horizontalArrangement = Arrangement.Center
                 ) {
-                    TextField(
-                        modifier = Modifier
-                            .fillMaxWidth(1.0f)
-                            .padding(8.dp),
-                        value = "",
-                        onValueChange ={},
-                        label = {
-                            Text(text = "Search")
-                        },
-                        keyboardOptions = KeyboardOptions(
-                            keyboardType = KeyboardType.Text,
-                            imeAction = ImeAction.Search
-                        ),
-                        leadingIcon = {
-                            Icon(
-                                painter = painterResource(id = R.drawable.ic_search),
-                                contentDescription = "Search",
-                                tint = Color.Black,
-                                modifier = Modifier.size(24.dp)
-                            )
-                        }
-                    )
+
+                    Column(modifier = Modifier.fillMaxWidth(0.8f)){
+                        SearchBar()
+
+                    }
                 }
             }
 
@@ -110,6 +94,9 @@ fun StarredCourses(){
                     .fillMaxWidth()
                     .height(10.dp))
                 LazyColumn(
+                    contentPadding = PaddingValues(
+                        bottom = 100.dp
+                    ),
                     content = {
                         CoursesData.explore.map { item { StarredCourseCard(it) } }
                     },
@@ -118,16 +105,7 @@ fun StarredCourses(){
             }
 
         }
-        Row(
-            horizontalArrangement = Arrangement.Center,
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(60.dp)
-                .background(MaterialTheme.colorScheme.secondary)
-                .align(Alignment.BottomCenter)
-        ){
-            Text("NavBar")
-        }
+
     }
 
 }

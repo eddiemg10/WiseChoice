@@ -310,5 +310,5 @@ fun Grades(userId: Int?)
 @Composable
 fun PreviewGradeScreen()
 {
-    GradeNewScreen()
+    Grades(1)
 }

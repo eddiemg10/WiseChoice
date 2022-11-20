@@ -17,6 +17,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.compose.rememberNavController
 import coil.compose.rememberImagePainter
 import com.example.wisechoice.ui.theme.WiseChoiceTheme
 
@@ -26,12 +27,16 @@ class MainActivity : ComponentActivity() {
         setContent {
             WiseChoiceTheme {
                 // A surface container using the 'background' color from the theme
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
-                ) {
-                    MainScreen()
-                }
+       //ORIGINAL
+//                Surface(
+//                    modifier = Modifier.fillMaxSize(),
+//                    color = MaterialTheme.colorScheme.background
+//                ) {
+//                    MainScreen()
+//                }
+
+                //TEST
+                RootNavigationGraph(navController = rememberNavController())
             }
         }
     }

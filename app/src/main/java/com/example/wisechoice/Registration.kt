@@ -29,29 +29,31 @@ import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.example.wisechoice.ui.theme.WiseChoiceTheme
 
-class RegistrationActivity : ComponentActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContent {
-            WiseChoiceTheme {
-                // A surface container using the 'background' color from the theme
-                Surface(
-                    modifier = Modifier
-                        .fillMaxSize()
-                        .background(MaterialTheme.colorScheme.primary),
-                    color = MaterialTheme.colorScheme.background,
-                ) {
-                    Register()
-                }
-            }
-        }
-    }
-}
+//class RegistrationActivity : ComponentActivity() {
+//    override fun onCreate(savedInstanceState: Bundle?) {
+//        super.onCreate(savedInstanceState)
+//        setContent {
+//            WiseChoiceTheme {
+//                // A surface container using the 'background' color from the theme
+//                Surface(
+//                    modifier = Modifier
+//                        .fillMaxSize()
+//                        .background(MaterialTheme.colorScheme.primary),
+//                    color = MaterialTheme.colorScheme.background,
+//                ) {
+//                    Register()
+//                }
+//            }
+//        }
+//    }
+//}
 
 @Composable
-fun Register(){
+fun Register(navController: NavController){
     Box(modifier = Modifier.fillMaxSize()) {
         Column(
             verticalArrangement = Arrangement.spacedBy(12.dp),
@@ -67,7 +69,7 @@ fun Register(){
             Email()
             Password("Password")
             Password("Confirm Password")
-            RegisterButton()
+            RegisterButton(navController)
 
             footer()
         }
@@ -82,7 +84,7 @@ fun Register(){
 fun registrationPreview() {
     WiseChoiceTheme {
         Surface {
-            Register()
+            Register(navController = rememberNavController())
 
         }
     }
@@ -108,9 +110,11 @@ fun Username(){
 
 
 @Composable
-fun RegisterButton(){
+fun RegisterButton(navController: NavController){
     Button(
-        onClick = { /*TODO*/ },
+        onClick = {
+            navController.navigate(Screen.Login.route)
+                  },
         modifier = Modifier.fillMaxWidth(),
         contentPadding = PaddingValues(16.dp),
         colors = ButtonDefaults.buttonColors(

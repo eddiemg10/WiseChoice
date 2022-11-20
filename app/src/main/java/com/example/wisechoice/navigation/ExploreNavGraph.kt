@@ -5,7 +5,6 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.composable
 import com.example.wisechoice.BottomBarScreen
-import com.example.wisechoice.BottomNavGraph
 import com.example.wisechoice.Screen
 import com.example.wisechoice.Universities
 

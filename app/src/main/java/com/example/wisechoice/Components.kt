@@ -175,15 +175,18 @@ fun CourseCard(course: Course, navHostController: NavHostController = rememberNa
 @Composable
 fun StarredCourseCard(course: Course) {
     Column(
-        modifier = Modifier.padding(top = 10.dp),
+        modifier = Modifier.padding(top = 10.dp).fillMaxWidth(),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Row(
-            horizontalArrangement = Arrangement.Center,
+            verticalAlignment = Alignment.CenterVertically,
             modifier = Modifier
                 .fillMaxWidth()
         ) {
-            CardImage(url = course.pic)
+            Column(modifier = Modifier.weight(2f), horizontalAlignment = Alignment.CenterHorizontally){
+                CardImage(url = course.pic)
+
+            }
 
             Spacer(
                 modifier = Modifier
@@ -191,7 +194,7 @@ fun StarredCourseCard(course: Course) {
                     .width(10.dp)
             )
             Column(
-                modifier = Modifier.padding(top = 10.dp),
+                modifier = Modifier.padding(top = 10.dp).weight(2f),
                 verticalArrangement = Arrangement.Center
             ) {
                 Text(
@@ -323,88 +326,40 @@ fun Badge(text: String){
 
 
 @Composable
-fun TextInput(){
-    val text = ""
-
-    Surface(
-    ){
-        Column(
-            modifier = Modifier
-                .fillMaxWidth(),
-            horizontalAlignment = Alignment.CenterHorizontally
-        ) {
-
-
-            OutlinedTextField(
-                modifier = Modifier
-                    .fillMaxWidth(0.8f)
-                    .border(
-                        BorderStroke(1.dp, MaterialTheme.colorScheme.onBackground)
-                    ),
-                value = "",
-                onValueChange = {
-                    /*TODO*/
-                },
-                placeholder = {
-                    Text(
-                        modifier = Modifier.alpha(ContentAlpha.medium),
-                        text = "Search Courses",
-                        color = MaterialTheme.colorScheme.onBackground
-                    )
-                },
-                singleLine = true,
-                leadingIcon = {
-                    IconButton(
-                        modifier = Modifier.alpha(ContentAlpha.medium),
-                        onClick = {}
-                    ) {
-                        Icon(
-                            imageVector = Icons.Default.Search,
-                            contentDescription = "Search Icon",
-                            tint = MaterialTheme.colorScheme.onBackground
-                        )
-                    }
-                },
-                trailingIcon = {
-                    IconButton(
-                        onClick = {
-                            if (text.isNotEmpty()) {
-                                // Call onTextChange()
-                            } else {
-                                // Call onCloseClickedd()
-                            }
-                        }
-                    ) {
-                        Icon(
-                            imageVector = Icons.Default.Close,
-                            contentDescription = "Close Icon",
-                            tint = MaterialTheme.colorScheme.onBackground
-
-                        )
-                    }
-                },
-                keyboardOptions = KeyboardOptions(
-                    //Change device keypad to have a search icon
-                    imeAction = ImeAction.Search
-                ),
-                keyboardActions = KeyboardActions(
-                    onSearch = {
-                        // Call onSearchClicked(text)
-                    }
-                ),
-                colors = TextFieldDefaults.textFieldColors(
-                    backgroundColor = MaterialTheme.colorScheme.background,
-                    cursorColor = MaterialTheme.colorScheme.primary,
-                    unfocusedIndicatorColor = Color.Transparent,
-                    disabledIndicatorColor = Color.Transparent,
-                    focusedIndicatorColor = Color.Transparent,
-                ),
-                shape = RoundedCornerShape(18.dp),
-
+fun SearchBar() {
+    OutlinedTextField(
+        modifier = Modifier.fillMaxWidth(),
+        value = "",
+        onValueChange = {},
+        leadingIcon = {
+            Icon(
+                imageVector = Icons.Filled.Search,
+                contentDescription = "Search Icon",
+                tint = MaterialTheme.colorScheme.onBackground.copy(
+                    alpha = ContentAlpha.medium
                 )
-        }
-    }
+            )
+        },
+        trailingIcon = {
+            IconButton(onClick = { /*TODO*/ }) {
+                Icon(
+                    imageVector = Icons.Filled.Close,
+                    contentDescription = "Close Icon",
+                    tint = Color.White
+                )
+            }
+        },
+        colors = TextFieldDefaults.outlinedTextFieldColors(
+            unfocusedBorderColor = MaterialTheme.colorScheme.onBackground.copy(
+                alpha = ContentAlpha.medium
+            ),
+            focusedBorderColor = MaterialTheme.colorScheme.onBackground,
+            cursorColor = MaterialTheme.colorScheme.onBackground,
+            backgroundColor = MaterialTheme.colorScheme.background
+        )
+    )
 }
+
 
 @Composable
 @Preview(showBackground = true)
