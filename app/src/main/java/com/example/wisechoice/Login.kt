@@ -32,7 +32,7 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.wisechoice.ui.theme.WiseChoiceTheme
 
-class LoginActivity : ComponentActivity() {
+/*class LoginActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -47,10 +47,10 @@ class LoginActivity : ComponentActivity() {
             }
         }
     }
-}
+}*/
 
 @Composable
-fun Login(){
+fun Login(navController: NavController){
 
     Column(
         verticalArrangement = Arrangement.spacedBy(12.dp),
@@ -159,7 +159,7 @@ fun Password(string: String){
 }
 
 @Composable
-fun signinButton(){
+fun signinButton(navController: NavController){
     Button(
         onClick = {
                   navController.popBackStack()

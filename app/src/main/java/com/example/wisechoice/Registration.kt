@@ -158,7 +158,7 @@ fun Header(heading: String){
 fun footer(text: String){
     ClickableText(text = AnnotatedString(text), onClick = {},  )
 }
-
+/* Mi illamo Roberto*/
 /*
 @Composable
 fun Footer(){
