@@ -88,7 +88,10 @@ fun Register(navController: NavController){
                 .fillMaxWidth()
                 .height(8.dp))
 
-            footer("Already have an account? Sign In")
+            /*footer("Already have an account? Sign In")*/
+            ClickableText(text = AnnotatedString("Already have an account? Sign In"),         onClick = {
+                navController.navigate(Screen.Login.route)
+            },  )
         }
     }
 

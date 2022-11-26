@@ -6,6 +6,7 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.ClickableText
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
@@ -22,6 +23,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Color.Companion.White
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.TextFieldValue
@@ -72,18 +74,21 @@ fun Login(navController: NavController){
             .height(7.dp))
         signinButton(navController = navController)
         /*TODO: Implement Sign Up */
-        Button(
+/*        Button(
             onClick = {
                 navController.navigate(Screen.Registration.route)
             },
             modifier = Modifier.fillMaxWidth(),
         ) {
             Text(text = "Create Account")
-        }
+        }*/
         Spacer(modifier = Modifier
             .fillMaxWidth()
             .height(8.dp))
-        footer("Don't have an account? Register here")
+        //footer("Don't have an account? Register here")
+        ClickableText(text = AnnotatedString("Don't have an account? Register here"), onClick = {
+            navController.navigate(Screen.Registration.route)
+        },  )
 
 
     }
@@ -179,4 +184,9 @@ fun signinButton(navController: NavController){
         ) {
         Text(text = "Sign In")
     }
+}
+
+@Composable
+fun efooter(text: String){
+    ClickableText(text = AnnotatedString(text), onClick = {},  )
 }
