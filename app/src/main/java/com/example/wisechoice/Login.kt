@@ -19,15 +19,21 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Color.Companion.White
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.AnnotatedString
+import androidx.compose.ui.text.SpanStyle
+import androidx.compose.ui.text.buildAnnotatedString
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.text.input.VisualTransformation
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
@@ -56,6 +62,7 @@ fun Login(navController: NavController){
 
     Column(
         verticalArrangement = Arrangement.spacedBy(12.dp),
+        horizontalAlignment = Alignment.CenterHorizontally,
         modifier = Modifier
             .fillMaxSize()
             .background(MaterialTheme.colorScheme.secondary)
@@ -63,7 +70,9 @@ fun Login(navController: NavController){
 
     ) {
         Header("LOGIN")
-
+        Spacer(modifier = Modifier
+            .fillMaxWidth()
+            .height(14.dp))
         Email()
         Spacer(modifier = Modifier
             .fillMaxWidth()
@@ -71,22 +80,35 @@ fun Login(navController: NavController){
         Password("Password")
         Spacer(modifier = Modifier
             .fillMaxWidth()
-            .height(7.dp))
+            .height(70.dp))
         signinButton(navController = navController)
         /*TODO: Implement Sign Up */
-/*        Button(
-            onClick = {
-                navController.navigate(Screen.Registration.route)
-            },
-            modifier = Modifier.fillMaxWidth(),
-        ) {
-            Text(text = "Create Account")
-        }*/
+
         Spacer(modifier = Modifier
             .fillMaxWidth()
             .height(8.dp))
-        //footer("Don't have an account? Register here")
-        ClickableText(text = AnnotatedString("Don't have an account? Register here"), onClick = {
+
+        val click = buildAnnotatedString {
+            withStyle(
+                style = SpanStyle(
+                    color = Color.White,
+                    fontWeight = FontWeight.Normal,
+                )
+            ){
+                append("Don't have an account? ")
+            }
+            withStyle(
+                style = SpanStyle(
+                    color = Color.White,
+                    fontWeight = FontWeight.Bold
+                )
+            ){
+                append(" Register")
+            }
+
+        }
+
+        ClickableText(text = click, onClick = {
             navController.navigate(Screen.Registration.route)
         },  )
 
@@ -171,7 +193,7 @@ fun signinButton(navController: NavController){
                   navController.navigate(Graph.EXPLORE)
                   },
         modifier = Modifier
-            .fillMaxWidth(fraction = 0.8F)
+            .fillMaxWidth()
             .padding(horizontal = 12.dp),
         contentPadding = PaddingValues(16.dp),
         colors = ButtonDefaults.buttonColors(
@@ -182,7 +204,14 @@ fun signinButton(navController: NavController){
 
 
         ) {
-        Text(text = "Sign In")
+        Text(
+            text = "Sign In",
+            color = Color.White,
+
+            fontWeight = FontWeight.W800,
+            textAlign = TextAlign.Center,
+
+        )
     }
 }
 

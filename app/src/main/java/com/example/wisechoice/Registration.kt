@@ -17,16 +17,22 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.text.AnnotatedString
+import androidx.compose.ui.text.SpanStyle
+import androidx.compose.ui.text.buildAnnotatedString
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
@@ -57,14 +63,20 @@ fun Register(navController: NavController){
     Box(modifier = Modifier.fillMaxSize()) {
         Column(
             verticalArrangement = Arrangement.spacedBy(12.dp),
+            horizontalAlignment = Alignment.CenterHorizontally,
             modifier = Modifier
-                .background(MaterialTheme.colorScheme.secondary).padding(horizontal = 20.dp)
+                .background(MaterialTheme.colorScheme.secondary)
+                .padding(horizontal = 20.dp)
 
                 .fillMaxSize()
 
 
         ) {
             Header("CREATE ACCOUNT")
+
+            Spacer(modifier = Modifier
+                .fillMaxWidth()
+                .height(14.dp))
 
             Username()
             Spacer(modifier = Modifier
@@ -75,23 +87,44 @@ fun Register(navController: NavController){
                 .fillMaxWidth()
                 .height(7.dp))
             Password("Password")
-            Spacer(modifier = Modifier
-                .fillMaxWidth()
-                .height(7.dp))
-            Password("Confirm Password")
+
 
             Spacer(modifier = Modifier
                 .fillMaxWidth()
-                .height(7.dp))
+                .height(70.dp))
+
             RegisterButton(navController)
             Spacer(modifier = Modifier
                 .fillMaxWidth()
                 .height(8.dp))
 
             /*footer("Already have an account? Sign In")*/
-            ClickableText(text = AnnotatedString("Already have an account? Sign In"),         onClick = {
-                navController.navigate(Screen.Login.route)
-            },  )
+            val click = buildAnnotatedString {
+                withStyle(
+                    style = SpanStyle(
+                        color = Color.White,
+                        fontWeight = FontWeight.Normal,
+                    )
+                ){
+                    append("Already have an account? ")
+                }
+                withStyle(
+                    style = SpanStyle(
+                        color = Color.White,
+                        fontWeight = FontWeight.Bold
+                    )
+                ){
+                    append("Login")
+                }
+
+            }
+            ClickableText(
+                text = click,
+                onClick = {
+                    navController.navigate(Screen.Login.route)
+                          },
+
+                )
         }
     }
 
@@ -133,7 +166,9 @@ fun RegisterButton(navController: NavController){
         onClick = {
             navController.navigate(Screen.Login.route)
                   },
-        modifier = Modifier.fillMaxWidth(fraction = 0.8F).padding(12.dp),
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(12.dp),
         contentPadding = PaddingValues(16.dp),
         colors = ButtonDefaults.buttonColors(
             backgroundColor = MaterialTheme.colorScheme.primary,
@@ -143,23 +178,56 @@ fun RegisterButton(navController: NavController){
 
 
         ) {
-        Text(text = "Sign Up")
+        Text(
+            text = "Create Account",
+            color = Color.White,
+
+            fontWeight = FontWeight.Bold,
+            textAlign = TextAlign.Center,
+
+            )
     }
 }
 
 @Composable
 fun Header(heading: String){
-    val imageModifier = Modifier.size(250.dp).padding(horizontal = 40.dp)
+    val imageModifier = Modifier
+        .size(80.dp)
 
+    Text(
+        text = "WISE CHOICE",
+        color = Color.White,
+        style = MaterialTheme.typography.displaySmall,
+        fontWeight = FontWeight.Normal,
+        textAlign = TextAlign.Center,
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(top = 20.dp)
+    )
 
-    Heading(title = heading)
-    Image(painter = painterResource(id = R.drawable.ic_graduation_cap_solid),  contentDescription ="" , modifier = imageModifier)
+    Image(painter = painterResource(id = R.drawable.ic_graduation_cap_solid),
+        contentDescription ="" ,
+        colorFilter = ColorFilter.tint(Color.White) ,
+        modifier = imageModifier
+    )
 
+    Text(
+        color = Color.White,
+        text = heading,
+        style = MaterialTheme.typography.headlineSmall,
+
+        fontWeight = FontWeight.Bold,
+        textAlign = TextAlign.Center,
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(top = 40.dp)
+    )
 }
 
 @Composable
 fun footer(text: String){
     ClickableText(text = AnnotatedString(text), onClick = {},  )
+
 }
 /* Mi illamo Roberto*/
 /*
