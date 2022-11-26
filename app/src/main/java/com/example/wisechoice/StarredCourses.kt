@@ -69,7 +69,6 @@ fun StarredCourses(){
                 modifier = Modifier
                     .fillMaxWidth(),
                 color = MaterialTheme.colorScheme.onPrimary,
-                shadowElevation = 8.dp,
             ) {
                 Row(
                     modifier = Modifier.fillMaxWidth().background(MaterialTheme.colorScheme.background),
@@ -98,7 +97,7 @@ fun StarredCourses(){
                         bottom = 100.dp
                     ),
                     content = {
-                        CoursesData.explore.map { item { StarredCourseCard(it) } }
+                        CoursesData.starred.map { item { StarredCourseCard(it) } }
                     },
                 )
 

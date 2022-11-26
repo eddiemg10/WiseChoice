@@ -17,7 +17,7 @@ sealed class Screen(
     object Registration: Screen("registration")
 
     object Universities: Screen("universities/{course}"){
-        fun passId(course: Int): String{
+        fun passId(course: String): String{
             return "universities/$course"
         }
     }
@@ -33,5 +33,9 @@ sealed class Screen(
             return "grades/$user"
         }
     }
+
+    object PersonalityCourses: Screen("hollandcourses")
+
+    object GradesCourses: Screen("gradescourses")
 }
 

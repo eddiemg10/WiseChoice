@@ -31,6 +31,7 @@ fun BottomNavGraph(navController: NavHostController){
 
         exploreNavGraph(navController = navController)
         profileNavGraph(navController = navController)
+        recommendedNavGraph(navController = navController)
 
     }
 }
@@ -43,10 +44,10 @@ fun NavGraphBuilder.exploreNavGraph(navController: NavHostController){
         composable(
             route = Screen.Universities.route,
             arguments = listOf(navArgument("course"){
-                type = NavType.IntType
+                type = NavType.StringType
             })
         ){
-            val courseId = it.arguments?.getInt("course")
+            val courseId = it.arguments?.getString("course")
             Universities(courseId)
         }
     }
@@ -74,7 +75,27 @@ fun NavGraphBuilder.profileNavGraph(navController: NavHostController){
             })
         ){
             val userId = it.arguments?.getInt("user")
-            Grades(userId)
+            Grades(userId, navController)
+        }
+    }
+}
+
+fun NavGraphBuilder.recommendedNavGraph(navController: NavHostController){
+    navigation(
+        route = Graph.RECOMMENDED,
+        startDestination = Screen.PersonalityCourses.route
+    ){
+        composable(
+            route = Screen.PersonalityCourses.route,
+
+        ){
+            SuggestedCoursesPersonality(navController)
+        }
+        composable(
+            route = Screen.GradesCourses.route,
+
+            ){
+            SuggestedCoursesResults(navController)
         }
     }
 }

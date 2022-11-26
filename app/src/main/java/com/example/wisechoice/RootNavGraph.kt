@@ -29,4 +29,5 @@ object Graph{
     const val EXPLORE = "explore_graph"
     const val UNIVERSITIES = "university_graph"
     const val PROFILE = "Profile_graph"
+    const val RECOMMENDED = "recommended_graph"
 }

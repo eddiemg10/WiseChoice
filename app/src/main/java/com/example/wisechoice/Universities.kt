@@ -18,10 +18,10 @@ data class Cutoff(val year: Int, val cutoff: Float)
 data class University(val id: Int, val name: String, val logo: String, val cutoff: Array<Cutoff>)
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
-fun Universities(courseId: Int?){
+fun Universities(courseId: String?){
 
     Column {
-        Heading(title = "course id = " + courseId.toString())
+        Heading(title =  courseId.toString())
         Spacer(
             modifier = Modifier
                 .fillMaxWidth()
@@ -53,6 +53,6 @@ fun Universities(courseId: Int?){
 @Composable
 fun showUniversitiesScreen(){
     WiseChoiceTheme {
-        Universities(1)
+        Universities("Course")
     }
 }

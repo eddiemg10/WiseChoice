@@ -2,31 +2,36 @@ package com.example.wisechoice
 
 import android.content.res.Configuration
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.GridCells
 import androidx.compose.foundation.lazy.LazyVerticalGrid
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.setValue
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.material.ContentAlpha
-import androidx.compose.material.OutlinedTextField
-import androidx.compose.material.TextField
-import androidx.compose.material.TextFieldDefaults
+import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material.icons.rounded.Star
 import androidx.compose.material3.*
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.RectangleShape
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
@@ -77,7 +82,7 @@ fun ExplorePage(navController: NavHostController = rememberNavController()){
                 .height(20.dp))
 
             Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.Center) {
-                PrimaryButton("Recommend course to me", {/*TODO*/})
+                PrimaryButton("Recommend course to me", {navController.navigate(Screen.PersonalityCourses.route)})
             }
 
 
@@ -86,8 +91,15 @@ fun ExplorePage(navController: NavHostController = rememberNavController()){
                 .height(10.dp))
 
             Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.Center) {
-                PrimaryButton("Search Courses", {/*TODO*/})
+                Column(modifier = Modifier.fillMaxWidth(0.8f)){
+                    SearchBar()
+
+                }
             }
+            Spacer(modifier = Modifier
+                .fillMaxWidth()
+                .height(20.dp))
+
 
             Box(
                 modifier = Modifier.fillMaxWidth(),
@@ -112,6 +124,20 @@ fun ExplorePage(navController: NavHostController = rememberNavController()){
 
     }
 
+}
+
+@Composable
+fun OptionMenu(){
+    var showMenu by remember { mutableStateOf(false)}
+    val context = LocalContext.current
+
+    DropdownMenu(expanded = showMenu,
+        onDismissRequest = { showMenu = false }
+    ) {
+        DropdownMenuItem(onClick = { Toast.makeText(context, "Star this Course", Toast.LENGTH_SHORT).show()}) {
+
+        }
+    }
 }
 
 @OptIn(ExperimentalFoundationApi::class)
