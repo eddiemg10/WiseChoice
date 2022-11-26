@@ -58,28 +58,43 @@ fun Register(navController: NavController){
         Column(
             verticalArrangement = Arrangement.spacedBy(12.dp),
             modifier = Modifier
+                .background(MaterialTheme.colorScheme.secondary).padding(horizontal = 20.dp)
 
-                .background(MaterialTheme.colorScheme.background)
+                .fillMaxSize()
 
 
         ) {
-            Header()
+            Header("CREATE ACCOUNT")
 
             Username()
+            Spacer(modifier = Modifier
+                .fillMaxWidth()
+                .height(7.dp))
             Email()
+            Spacer(modifier = Modifier
+                .fillMaxWidth()
+                .height(7.dp))
             Password("Password")
+            Spacer(modifier = Modifier
+                .fillMaxWidth()
+                .height(7.dp))
             Password("Confirm Password")
-            RegisterButton(navController)
 
-            footer()
+            Spacer(modifier = Modifier
+                .fillMaxWidth()
+                .height(7.dp))
+            RegisterButton(navController)
+            Spacer(modifier = Modifier
+                .fillMaxWidth()
+                .height(8.dp))
+
+            footer("Already have an account? Sign In")
         }
     }
 
 }
 
-@Preview(showBackground = true)
-@Preview(name="Dark Mode", uiMode = Configuration.UI_MODE_NIGHT_YES,
-    showBackground = true)
+@Preview
 @Composable
 fun registrationPreview() {
     WiseChoiceTheme {
@@ -115,7 +130,7 @@ fun RegisterButton(navController: NavController){
         onClick = {
             navController.navigate(Screen.Login.route)
                   },
-        modifier = Modifier.fillMaxWidth(),
+        modifier = Modifier.fillMaxWidth(fraction = 0.8F).padding(12.dp),
         contentPadding = PaddingValues(16.dp),
         colors = ButtonDefaults.buttonColors(
             backgroundColor = MaterialTheme.colorScheme.primary,
@@ -130,20 +145,20 @@ fun RegisterButton(navController: NavController){
 }
 
 @Composable
-fun Header(){
-    val imageModifier = Modifier.size(250.dp)
+fun Header(heading: String){
+    val imageModifier = Modifier.size(250.dp).padding(horizontal = 40.dp)
 
 
-    Heading(title = "CREATE ACCOUNT")
+    Heading(title = heading)
     Image(painter = painterResource(id = R.drawable.ic_graduation_cap_solid),  contentDescription ="" , modifier = imageModifier)
 
 }
 
 @Composable
-fun footer(){
-    ClickableText(text = AnnotatedString("Already have an account? Sign In"), onClick = {},  )
+fun footer(text: String){
+    ClickableText(text = AnnotatedString(text), onClick = {},  )
 }
-
+/* Mi illamo Roberto*/
 /*
 @Composable
 fun Footer(){
