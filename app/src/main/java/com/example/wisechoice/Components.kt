@@ -467,7 +467,8 @@ fun SearchBar() {
             ),
             focusedBorderColor = MaterialTheme.colorScheme.onBackground,
             cursorColor = MaterialTheme.colorScheme.onBackground,
-            backgroundColor = MaterialTheme.colorScheme.background
+            backgroundColor = MaterialTheme.colorScheme.background,
+            textColor = MaterialTheme.colorScheme.onBackground
         )
     )
 }
