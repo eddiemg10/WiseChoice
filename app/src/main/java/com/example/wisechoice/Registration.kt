@@ -65,8 +65,10 @@ fun Register(navController: NavController){
             verticalArrangement = Arrangement.spacedBy(12.dp),
             horizontalAlignment = Alignment.CenterHorizontally,
             modifier = Modifier
+
                 .background(MaterialTheme.colorScheme.secondary)
                 .padding(horizontal = 20.dp)
+
 
                 .fillMaxSize()
 
@@ -166,9 +168,11 @@ fun RegisterButton(navController: NavController){
         onClick = {
             navController.navigate(Screen.Login.route)
                   },
+
         modifier = Modifier
             .fillMaxWidth()
             .padding(12.dp),
+
         contentPadding = PaddingValues(16.dp),
         colors = ButtonDefaults.buttonColors(
             backgroundColor = MaterialTheme.colorScheme.primary,
@@ -191,6 +195,7 @@ fun RegisterButton(navController: NavController){
 
 @Composable
 fun Header(heading: String){
+
     val imageModifier = Modifier
         .size(80.dp)
 
@@ -205,16 +210,19 @@ fun Header(heading: String){
             .padding(top = 20.dp)
     )
 
+
     Image(painter = painterResource(id = R.drawable.ic_graduation_cap_solid),
         contentDescription ="" ,
         colorFilter = ColorFilter.tint(Color.White) ,
         modifier = imageModifier
     )
 
+
     Text(
         color = Color.White,
         text = heading,
         style = MaterialTheme.typography.headlineSmall,
+
 
         fontWeight = FontWeight.Bold,
         textAlign = TextAlign.Center,

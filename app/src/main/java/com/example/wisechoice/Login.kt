@@ -70,9 +70,11 @@ fun Login(navController: NavController){
 
     ) {
         Header("LOGIN")
+
         Spacer(modifier = Modifier
             .fillMaxWidth()
             .height(14.dp))
+
         Email()
         Spacer(modifier = Modifier
             .fillMaxWidth()
@@ -106,7 +108,13 @@ fun Login(navController: NavController){
                 append(" Register")
             }
 
+
         }
+        Spacer(modifier = Modifier
+            .fillMaxWidth()
+            .height(8.dp))
+        footer("Don't have an account? Register here")
+
 
         ClickableText(text = click, onClick = {
             navController.navigate(Screen.Registration.route)
@@ -194,6 +202,7 @@ fun signinButton(navController: NavController){
                   },
         modifier = Modifier
             .fillMaxWidth()
+
             .padding(horizontal = 12.dp),
         contentPadding = PaddingValues(16.dp),
         colors = ButtonDefaults.buttonColors(
